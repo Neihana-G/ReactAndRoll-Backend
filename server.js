@@ -4,6 +4,7 @@ const cors = require("cors");
 // const { getPool } = require("./db/getPool");
 const homePageRoute = require("./routes/homePageTest");
 const helpRequests = require("./routes/helpRequests");
+const teacherProfile = require("./routes/teacherProfile");
 require("dotenv").config();
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(cors());
 
 //------ ROUTES ------//
 app.use(helpRequests);
+app.use(teacherProfile);
 
 app.listen(port, () => {
     console.log(`Server live at http://localhost:${port}`);
