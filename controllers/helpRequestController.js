@@ -7,7 +7,7 @@ module.exports = {
         res.status(200).send(result);
     },
     newHelpRequest: async (req, res) => {
-        console.log("Mark as done endpoint reached");
+        console.log("New request as done endpoint reached");
 
         const student_id = req.body.student_id;
 
