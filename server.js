@@ -5,6 +5,8 @@ const cors = require("cors");
 const homePageRoute = require("./routes/homePageTest");
 const helpRequests = require("./routes/helpRequests");
 const studentProfiles = require("./routes/studentProfiles");
+const studentProgress = require("./routes/studentProgress");
+
 require("dotenv").config();
 const app = express();
 
@@ -20,6 +22,7 @@ app.use(cors());
 //------ ROUTES ------//
 app.use(helpRequests);
 app.use(studentProfiles);
+app.use(studentProgress);
 
 app
   .listen(port, () => {
