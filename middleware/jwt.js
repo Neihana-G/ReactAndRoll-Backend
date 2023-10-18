@@ -3,7 +3,6 @@ require("dotenv").config();
 
 const verifyJWT = (req, res, next) => {
     const token = req.headers["x-access-token"];
-    console.log('Verify toke endpoint hit')
     if (!token) {
         res.status(401).send("No auth token provided");
     } else {
@@ -14,9 +13,9 @@ const verifyJWT = (req, res, next) => {
                     message: "You failed to be authenticated",
                 });
             } else {
-                req.user_id = decoded.student_id || decoded.teacher_id
-                req.userState = decoded.userState
-                console.log(req.user_id, req.userState)
+                req.user_id = decoded.student_id || decoded.teacher_id;
+                req.userState = decoded.userState;
+                console.log(req.user_id, req.userState);
                 next();
             }
         });
@@ -24,4 +23,3 @@ const verifyJWT = (req, res, next) => {
 };
 
 module.exports = verifyJWT;
-
