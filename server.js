@@ -6,14 +6,25 @@ const homePageRoute = require("./routes/homePageTest");
 const helpRequests = require("./routes/helpRequests");
 const projectLibrary = require("./routes/projectLibrary");
 const teacherProfile = require("./routes/teacherProfile");
+const signUp = require('./routes/signUp')
+const login = require('./routes/login')
+
 require("dotenv").config();
 const app = express();
 
 port = process.env.PORT || 4000;
 
 //------ MIDDLEWARE ------//
+const corsOptions = {
+  origin: [
+      "http://localhost:3000",
+      // your origins here
+  ],
+  credentials: true,
+  exposedHeaders: ["set-cookie"],
+};
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 //---- DB CONNECTION ----//
 // const pool = getPool();
@@ -22,6 +33,8 @@ app.use(cors());
 app.use(helpRequests);
 app.use(projectLibrary);
 app.use(teacherProfile);
+app.use(signUp);
+app.use(login)
 
 app
   .listen(port, () => {
