@@ -10,6 +10,7 @@ const projectLibrary = require("./routes/projectLibrary");
 const teacherProfile = require("./routes/teacherProfile");
 const signUp = require("./routes/signUp");
 const login = require("./routes/login");
+const studentsTeacher = require("./routes/studentsTeacher");
 
 require("dotenv").config();
 const app = express();
@@ -18,13 +19,13 @@ port = process.env.PORT || 4000;
 
 //------ MIDDLEWARE ------//
 const corsOptions = {
-    origin: [
-        "http://localhost:3000",
-        "http://192.168.1.121:3000",
-        // your origins here
-    ],
-    allowedHeaders: ["x-access-token", "Content-Type"],
-    credentials: true,
+  origin: [
+    "http://localhost:3000",
+    "http://192.168.1.121:3000",
+    // your origins here
+  ],
+  allowedHeaders: ["x-access-token", "Content-Type"],
+  credentials: true,
 };
 app.use(express.json());
 app.use(cors(corsOptions));
@@ -32,7 +33,7 @@ app.use(cors(corsOptions));
 //
 //------ ROUTES ------//
 app.get("/", (req, res) => {
-    res.send("test");
+  res.send("test");
 });
 app.use(helpRequests);
 app.use(studentProfiles);
@@ -41,6 +42,7 @@ app.use(projectLibrary);
 app.use(teacherProfile);
 app.use(signUp);
 app.use(login);
+app.use(studentsTeacher);
 
 app
   .listen(port, () => {
