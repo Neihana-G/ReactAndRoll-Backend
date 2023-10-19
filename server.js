@@ -4,6 +4,8 @@ const cors = require("cors");
 // const { getPool } = require("./db/getPool");
 const homePageRoute = require("./routes/homePageTest");
 const helpRequests = require("./routes/helpRequests");
+const studentProfiles = require("./routes/studentProfiles");
+const studentProgress = require("./routes/studentProgress");
 const projectLibrary = require("./routes/projectLibrary");
 const teacherProfile = require("./routes/teacherProfile");
 const signUp = require("./routes/signUp");
@@ -33,19 +35,23 @@ app.get("/", (req, res) => {
     res.send("test");
 });
 app.use(helpRequests);
+app.use(studentProfiles);
+app.use(studentProgress);
 app.use(projectLibrary);
 app.use(teacherProfile);
 app.use(signUp);
 app.use(login);
 
-app.listen(port, () => {
+app
+  .listen(port, () => {
     console.log(`Server live at http://localhost:${port}`);
-}).on("error", (error) => {
+  })
+  .on("error", (error) => {
     if (error.code === "EADDRINUSE") {
-        console.log(
-            "Port is already in use, try a different port or close already running servers"
-        );
+      console.log(
+        "Port is already in use, try a different port or close already running servers"
+      );
     } else {
-        console.log("Server error: ", error);
+      console.log("Server error: ", error);
     }
-});
+  });
