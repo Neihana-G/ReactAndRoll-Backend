@@ -21,14 +21,12 @@ const corsOptions = {
         "http://192.168.1.121:3000",
         // your origins here
     ],
+    allowedHeaders: ["x-access-token", "Content-Type"],
     credentials: true,
-    exposedHeaders: ["set-cookie"],
 };
 app.use(express.json());
 app.use(cors(corsOptions));
 
-//---- DB CONNECTION ----//
-// const pool = getPool();
 //
 //------ ROUTES ------//
 app.get("/", (req, res) => {
